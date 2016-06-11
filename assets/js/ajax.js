@@ -9,7 +9,7 @@ window.onload = function() {
 
          var chef = $(this).attr('data-name'); 
          //chef = "cats";
-         var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + chef + "&api_key=dc6zaTOxFJmzC&limit=3";
+         var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + chef + "&api_key=dc6zaTOxFJmzC&limit=10";
 
          $.ajax({url: queryURL, method: 'GET'})
 
@@ -25,10 +25,13 @@ window.onload = function() {
              var rating = results[i].rating;
              var p = $('<p>').text( "Rating: " + rating);
              var personImage = $('<img>');
-             personImage.attr('src', results[i].images.fixed_height.url);
+             personImage.attr('data-gifffer', results[i].images.fixed_height.url);
              gifDiv.append(p)
              gifDiv.append(personImage)
-             $('#chefView').append(gifDiv);  
+             $('#chefView').append(gifDiv); 
+
+             Gifffer(); //runs function to pause gif
+            
             }
          } // end of for loop
         
@@ -36,7 +39,7 @@ window.onload = function() {
     }
 
 
-    function renderButtons(){ 
+    function renderButtons(){ //makes buttons
         $('#buttonsView').empty();
         for (var i = 0; i < chefs.length; i++){ 
              var a = $('<button>')
@@ -48,15 +51,7 @@ window.onload = function() {
     }
 
 
-    // temporary button
-    $('#tempButton').click(function(){
-        
-        $('.item').remove();
-        //alert("hi");
-    });
-
-
-    $('#addChef').on('click', function(){
+     $('#addChef').on('click', function(){
 
         // remove previously displayed gifs
         $('.item').remove();
@@ -68,10 +63,12 @@ window.onload = function() {
         return false;
     })
 
-
+    //click button runs displayChef function
     $(document).on('click', '.chef', displayChef);
 
     renderButtons();
+
+    
 
 }//onload
 

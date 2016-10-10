@@ -56,7 +56,33 @@ body {
 
 
 p{
-  font-size: 20px;
+  font-family: sans-serif;
+  font-size: 12px;
   color: #636562;
   margin-bottom: 10px;
+}
+
+/*==========980=============*/
+@media screen and (max-width: 980px){
+.title{
+  width: 100%;
+  align-items: center;
+}
+}
+
+
+/*==========768=============*/
+@media screen and (max-width: 768px){
+.title{
+  width: 100%;
+  align-items: center;
+}
+}
+
+/*==========640=============*/
+@media screen and (max-width: 640px){
+.title{
+  width: 100%;
+  align-items: center;
+}
 }
